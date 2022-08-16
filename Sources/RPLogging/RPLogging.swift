@@ -1,5 +1,5 @@
 //
-//  Log.swift
+//  RPLog.swift
 //  Swiftilities
 //
 //  Created by Nicholas Bonatsakis on 2/5/16.
@@ -10,7 +10,7 @@ import Foundation
 /**
 *  A simple log that outputs to the console via ```print()````
 */
-open class Log {
+open class RPLog {
 
     // MARK: Configuration
     /**
@@ -71,12 +71,12 @@ open class Log {
     }()
 
     /// Generic log method
-    fileprivate static func log<T>(_ object: @autoclosure () -> T, level: Log.Level, _ fileName: String, _ functionName: String, _ line: Int) {
+    fileprivate static func log<T>(_ object: @autoclosure () -> T, level: RPLog.Level, _ fileName: String, _ functionName: String, _ line: Int) {
         if logLevel.rawValue <= level.rawValue {
-            let date = Log.dateformatter.string(from: Date())
+            let date = RPLog.dateformatter.string(from: Date())
             let components: [String] = fileName.components(separatedBy: "/")
             let objectName = components.last ?? "Unknown Object"
-            let levelString = Log.useEmoji ? level.emoji : "|" + level.name.uppercased() + "|"
+            let levelString = RPLog.useEmoji ? level.emoji : "|" + level.name.uppercased() + "|"
             let logString = "\(levelString)\(date) \(objectName) \(functionName) line \(line):\n\(object())"
             print(logString + "\n")
             handler?(level, logString)
