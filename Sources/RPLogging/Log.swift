@@ -134,7 +134,7 @@ open class Log {
         let message = "\(object())"
         let levelString = useEmoji ? level.emoji : "|" + level.name.uppercased() + "|"
         let locationString = "\(objectName) \(functionName) line \(line)"
-        let logString = "\(levelString)\(dateString) \(locationString):\n\(message)"
+        let logString = "\(levelString) \(dateString) \(locationString):\n\(message)"
 
         handle(message: Message(
             category: category,
