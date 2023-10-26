@@ -26,7 +26,7 @@ open class OSLogHandler: LogHandler {
 
     public func handle(message: Log.Message) {
         if #available(macOS 11.0, iOS 14.0, watchOS 7.0, tvOS 14.0, *) {
-            osLog(level: message.level, category: message.category, message: message.message)
+            osLog(level: message.level, category: message.category, message: message.description)
         } else {
             print(message.description)
         }
